@@ -15,6 +15,8 @@ class UserCubit extends Cubit<UserState> {
   getUsers() async {
     emit(OnGetUsersLoadingState());
     await usersRepository.getAllUsers().then((value) {
+      print(123);
+      print(value);
       users = value;
       emit(OnGetUsersSuccessState());
     }).catchError((error) {
@@ -26,6 +28,8 @@ class UserCubit extends Cubit<UserState> {
   getTodos() async {
     emit(OnGetTodoLoadingState());
     await usersRepository.getAllTodos().then((value) {
+      print(456);
+      print(value);
       todos = value;
       emit(OnGetTodoSuccessState());
     }).catchError((error) {

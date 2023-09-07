@@ -15,6 +15,7 @@ class UserWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width*.5,
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5),
       decoration: BoxDecoration(
         color: AppColors.backGroundColor,
@@ -24,44 +25,53 @@ class UserWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              // CircleAvatar(
-              //   radius: 25.r,
-              //   backgroundImage: NetworkImage(image),
-              //   backgroundColor: AppColors.greyColor,
-              // ),
+              CircleAvatar(
+                radius: 25.r,
+                backgroundImage: NetworkImage(image),
+                backgroundColor: AppColors.greyColor,
+              ),
               SizedBox(width: 10.w),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.whiteColor,
+              SizedBox(
+                width: MediaQuery.of(context).size.width*.2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.whiteColor,
+                      ),
                     ),
-                  ),
-                  Text(
-                    subTitle,
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.whiteColor.withOpacity(.5),
+                    Text(
+                      subTitle,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.whiteColor.withOpacity(.5),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
            ]
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                email,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.whiteColor.withOpacity(.5),
+              SizedBox(
+                width: MediaQuery.of(context).size.width*.2,
+                child: Text(
+                  email,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.whiteColor.withOpacity(.5),
+                  ),
                 ),
               ),
               SizedBox(width: 15.w),

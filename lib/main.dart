@@ -1,3 +1,4 @@
+import 'package:employees/bloc/observer.dart';
 import 'package:employees/bloc/user_block.dart';
 import 'package:employees/data/repository/users_repository.dart';
 import 'package:employees/data/web_service/users_web_services.dart';
@@ -6,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
             ),
             home: BlocProvider(
               create: (context) =>
-                  UserCubit(UsersRepository(UsersWebServices())),
+                  UserCubit(UsersRepository(UsersWebServices()))..getUsers()..getTodos(),
               child: const BaseScreen(),
             ),
           );

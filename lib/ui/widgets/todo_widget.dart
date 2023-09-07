@@ -17,7 +17,7 @@ class ToDoWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             "ToDo",
@@ -28,23 +28,24 @@ class ToDoWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: 5.h),
-          Divider(color: AppColors.whiteColor,),
-          Text("data",style: TextStyle(color: AppColors.whiteColor),)
-          // ListView.separated(
-          //     itemBuilder: (context, index) {
-          //       return Text(
-          //         data[index].title,
-          //         style: TextStyle(
-          //           fontSize: 10.sp,
-          //           fontWeight: FontWeight.w200,
-          //           color: AppColors.whiteColor.withOpacity(.5),
-          //         ),
-          //       );
-          //     },
-          //     separatorBuilder: (context, index) {
-          //       return SizedBox(height: 10.h);
-          //     },
-          //     itemCount: data.length),
+          SizedBox(
+              width: 30.w,
+              child: Divider(color: AppColors.whiteColor.withOpacity(.5))),
+          // Text("data",style: TextStyle(color: AppColors.whiteColor)),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: data.map((e) => Padding(
+              padding:  EdgeInsets.only(top: 10.h),
+              child: Text(
+                e.title,
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w200,
+                  color: AppColors.whiteColor.withOpacity(.5),
+                ),
+              ),
+            )).toList(),
+          )
         ],
       ),
     );

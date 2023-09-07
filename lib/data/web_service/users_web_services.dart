@@ -9,16 +9,19 @@ class UsersWebServices {
   UsersWebServices() {
     BaseOptions options = BaseOptions(
       baseUrl: AppStrings.baseUrl,
-      receiveDataWhenStatusError: true,
-      connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 3),
+    //   receiveDataWhenStatusError: true,
+    //   connectTimeout: const Duration(seconds: 5),
+    //   receiveTimeout: const Duration(seconds: 3),
     );
     _dio = Dio(options);
   }
 
   Future<List<UserResponse>> getAllUsers() async {
     try {
-      final response = await _dio.get('users');
+      print(123);
+
+      final response = await _dio.get('https://jsonplaceholder.typicode.com/users');
+
       if (response.statusCode == 200) {
         return List<UserResponse>.from(response.data.map((x)=>UserResponse.fromJson(x)));
       } else {
@@ -31,7 +34,7 @@ class UsersWebServices {
 
   Future<List<Todo>> getTodos() async {
     try {
-      final response = await _dio.get('todos');
+      final response = await _dio.get('/todos');
       if (response.statusCode == 200) {
         return List<Todo>.from(response.data.map((x)=>Todo.fromJson(x)));
       } else {
